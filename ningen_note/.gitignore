@@ -20,9 +20,6 @@
 # production
 /build
 
-# user specified
-/hidden/
-
 # misc
 *.pem
 
@@ -57,3 +54,7 @@ next-env.d.ts
 .project
 .settings/
 .vscode/settings.json
+
+# custom
+/hidden/
+hidden/
