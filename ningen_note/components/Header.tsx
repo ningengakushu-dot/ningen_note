@@ -2,7 +2,6 @@ import Link from "next/link"
 
 export default function Header() {
     return (
-
         <header>
             <div>
                 <Link href="/">NINGEN GAKUSHU NOTE</Link>
