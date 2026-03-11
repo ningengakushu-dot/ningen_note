@@ -1,6 +1,7 @@
 import { prisma } from "@/lib/prisma"
 import Link from "next/link"
 import ArticleCard from "@/components/ArticleCard"
+import TagFilter from "@/components/TagFilter"
 
 
 // データ取得
@@ -9,12 +10,16 @@ export default async function Home() {            // async追加
     where: { status: "published" },
     orderBy: { published_at: "desc" },
   })
+
   return (
     <main>
       <div id="view-home">
         <div>
           <h1>記事一覧</h1>
         </div>
+
+        {/* <TagFilter />　後日 */}
+
         <div id="post-grid">
           {posts.map((post) => (
               <ArticleCard key={post.id} slug={post.slug}
