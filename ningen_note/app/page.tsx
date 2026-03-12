@@ -12,15 +12,15 @@ export default async function Home() {            // async追加
   })
 
   return (
-    <main className="grow max-w-4xl mx-auto px-4 py-8">
-      <div>
-        <div className="mb-8">
-          <h1 className="text-2xl font-bold mb-4">記事一覧</h1>
+    <main>
+      <div id="view-home">
+        <div>
+          <h1>記事一覧</h1>
         </div>
 
         {/* <TagFilter />　後日 */}
 
-        <div className="grid gap-6">
+        <div id="post-grid">
           {posts.map((post) => (
               <ArticleCard key={post.id} slug={post.slug}
                 title={post.title} tags={post.tags}
