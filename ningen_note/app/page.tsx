@@ -5,11 +5,17 @@ import TagFilter from "@/components/TagFilter"
 
 
 // データ取得
-export default async function Home() {            // async追加
-  const posts = await prisma.post.findMany({      // findMany 記事を取得
+// Prismaのリファレンスを参照（findMany、where、orderBy）
+export default async function Home() {
+  const posts = await prisma.post.findMany({   // 記事を取得
     where: { status: "published" },
     orderBy: { published_at: "desc" },
   })
+
+  const tagList: string[] = []  // タグリストの配列と　型の指定　
+  for (const post of posts) {
+    tagList.push(...post.tags)
+  }
 
   return (
     <main>
@@ -18,14 +24,14 @@ export default async function Home() {            // async追加
           <h1>記事一覧</h1>
         </div>
 
-        {/* <TagFilter />　後日 */}
+        <TagFilter tags={tagList} />
 
         <div id="post-grid">
           {posts.map((post) => (
-              <ArticleCard key={post.id} slug={post.slug}
-                title={post.title} tags={post.tags}
-                published_at={post.published_at?.toISOString().slice(0, 10) ?? null}
-              />
+            <ArticleCard key={post.id} slug={post.slug}
+              title={post.title} tags={post.tags}
+              published_at={post.published_at?.toISOString().slice(0, 10) ?? null}
+            />
           ))}
         </div>
       </div>
