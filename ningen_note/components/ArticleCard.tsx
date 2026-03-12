@@ -10,16 +10,19 @@ type Props = {
 
 export default function ArticleCard(props: Props) {
     return (
-        <Link href={`/posts/${props.slug}`}>
-            {props.tags.map((tag) => (       // 配列の要素が２つの場合
-            <span key={tag}>{tag}</span>    //  1回目　<span key="技術">技術</span>   
-                                            //　2回目　<span key="日常">日常</span>                   
-            ))}
-            <p>投稿日：{props.published_at}</p>
-            <p>{props.title}</p>
+        <Link href={`/posts/${props.slug}`} className="bg-white p-5 rounded border border-gray-200 hover:border-gray-400 cursor-pointer flex flex-col h-full">
+            <div className="flex items-center gap-3 mb-3 flex-wrap">
+                {props.tags.map((tag) => (
+                    <span className="inline-flex items-center rounded bg-gray-100 px-2 py-1 text-xs font-medium text-gray-600" key={tag}>{tag}</span>
+                ))}
+                <span className="text-xs text-gray-500">投稿日: {props.published_at}</span>
+            </div>
+            <h2 className="text-lg font-bold">{props.title}</h2>
         </Link>
     )
 }
+
+
 
 /*
 カード全体を <Link href={/posts/${props.slug}}> で囲む（クリックで記事詳細へ）

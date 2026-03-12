@@ -1,23 +1,23 @@
 @import "tailwindcss";
 
 /* 記事詳細のMarkdown用簡易スタイル */
-.markdown-body h2 { 
-    font-size: 1.5rem; 
-    font-weight: bold; 
-    margin-top: 1.5rem; 
-    margin-bottom: 0.75rem; 
-    border-bottom: 1px solid #e5e7eb; 
-    padding-bottom: 0.25rem; 
+.markdown-body h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    border-bottom: 1px solid #e5e7eb;
+    padding-bottom: 0.25rem;
 }
 
-.markdown-body p { 
-    margin-bottom: 1rem; 
-    line-height: 1.75; 
+.markdown-body p {
+    margin-bottom: 1rem;
+    line-height: 1.75;
 }
 
-.markdown-body strong { 
-    font-weight: 600; 
-    color: #111827; 
+.markdown-body strong {
+    font-weight: 600;
+    color: #111827;
 }
 
 .markdown-body ul {
@@ -28,152 +28,4 @@
 
 .markdown-body li {
     margin-bottom: 0.25rem;
-}
-
-/* ===== レイアウト・共通 ===== */
-
-body {
-    background-color: #f9fafb;
-    color: #111827;
-    font-family: ui-sans-serif, system-ui, sans-serif;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-}
-
-/* ===== ヘッダー ===== */
-
-header {
-    background-color: #fff;
-    border-bottom: 1px solid #e5e7eb;
-}
-
-header > div {
-    max-width: 56rem;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    height: 4rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-header > div > a:first-child {
-    font-size: 1.25rem;
-    font-weight: 700;
-}
-
-header > div > a:last-child {
-    font-size: 0.875rem;
-    color: #6b7280;
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
-}
-
-header > div > a:last-child:hover {
-    color: #111827;
-}
-
-header > div > a:last-child i {
-    width: 1rem;
-    height: 1rem;
-}
-
-/* ===== メイン ===== */
-
-main {
-    flex-grow: 1;
-    max-width: 56rem;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-}
-
-/* ホームビュー */
-
-#view-home > div:first-child {
-    margin-bottom: 2rem;
-}
-
-#view-home > div:first-child > h1 {
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-}
-
-#category-filters {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-}
-
-#post-grid {
-    display: grid;
-    gap: 1.5rem;
-}
-
-/* 詳細ビュー */
-
-#view-detail {
-    display: none;
-    max-width: 42rem;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: #fff;
-    padding: 2rem;
-    border-radius: 0.25rem;
-    border: 1px solid #e5e7eb;
-}
-
-#view-detail > button {
-    font-size: 0.875rem;
-    color: #6b7280;
-    margin-bottom: 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
-}
-
-#view-detail > button:hover {
-    color: #111827;
-}
-
-#view-detail > button i {
-    width: 1rem;
-    height: 1rem;
-}
-
-#detail-header {
-    margin-bottom: 2rem;
-}
-
-#detail-content {
-    color: #374151;
-}
-
-/* ===== フッター ===== */
-
-footer {
-    background-color: #fff;
-    border-top: 1px solid #e5e7eb;
-    margin-top: auto;
-}
-
-footer > div {
-    max-width: 56rem;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
-    text-align: center;
-    font-size: 0.875rem;
-    color: #6b7280;
 }

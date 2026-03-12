@@ -15,7 +15,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
-      <body>
+      <body className="bg-gray-50 text-gray-900 font-sans min-h-screen flex flex-col">
         <Header />
         {children}
         <Footer />
