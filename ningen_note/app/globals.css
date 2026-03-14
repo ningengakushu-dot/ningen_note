@@ -40,7 +40,10 @@ body {
     display: flex;
     flex-direction: column;
 }
-
+table,th,td {
+    border: 1px solid #333;
+    padding: 10px;
+}
 /* ===== ヘッダー ===== */
 
 header {
@@ -117,6 +120,11 @@ main {
     display: grid;
     gap: 1.5rem;
 }
+#post-grid a {
+    background: #FFF;
+    padding: 20px;
+    margin: 10px 0 0;
+}
 
 /* 詳細ビュー */
 
@@ -157,6 +165,26 @@ main {
     color: #374151;
 }
 
+
+
+/*  ===== ログイン画面 =====  */
+#login-form div{
+    display:block;
+    margin: 10px 0;
+}
+#login-form input {
+    display:block;
+    border: 1px solid #333;
+}
+#login-form button{
+    width: 100%;
+    margin: 10px auto;
+    display:block;
+    justify-content: center;
+    background: #EEEEEE;
+    border: 1px solid #000000;
+}
+
 /* ===== フッター ===== */
 
 footer {
@@ -177,3 +205,4 @@ footer > div {
     font-size: 0.875rem;
     color: #6b7280;
 }
+

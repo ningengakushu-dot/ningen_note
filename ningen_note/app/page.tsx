@@ -12,10 +12,21 @@ export default async function Home() {
     orderBy: { published_at: "desc" },
   })
 
-  const tagList: string[] = []  // タグリストの配列と　型の指定　
+  //日付がない場合は null を返す
+  function publishedDate(dateString: Date | null) {
+    if (dateString) {
+      return dateString.toISOString().slice(0, 10);
+    } else {
+      return null;
+    }
+  }
+
+  const tagList: string[] = []
   for (const post of posts) {
     tagList.push(...post.tags)
   }
+
+  const uniqueTags = Array.from(new Set(tagList))
 
   return (
     <main>
@@ -23,17 +34,16 @@ export default async function Home() {
         <div>
           <h1>記事一覧</h1>
         </div>
-
-        <TagFilter tags={tagList} />
-
+        <TagFilter tags={uniqueTags} />
         <div id="post-grid">
           {posts.map((post) => (
             <ArticleCard key={post.id} slug={post.slug}
               title={post.title} tags={post.tags}
-              published_at={post.published_at?.toISOString().slice(0, 10) ?? null}
+              published_at={publishedDate(post.published_at)}
             />
           ))}
         </div>
+
       </div>
     </main>
   )
@@ -50,5 +60,5 @@ export default async function Home() {
     ?. や ?? や .toISOString() 　は使うたびに調べればOK。
 
 ※リンク繋がらない
-<Link href={`/posts/${slug}`}> 
+<Link href={`/posts/${slug}`}>
 */
