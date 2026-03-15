@@ -1,23 +1,23 @@
 @import "tailwindcss";
 
 /* 記事詳細のMarkdown用簡易スタイル */
-.markdown-body h2 { 
-    font-size: 1.5rem; 
-    font-weight: bold; 
-    margin-top: 1.5rem; 
-    margin-bottom: 0.75rem; 
-    border-bottom: 1px solid #e5e7eb; 
-    padding-bottom: 0.25rem; 
+.markdown-body h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    border-bottom: 1px solid #e5e7eb;
+    padding-bottom: 0.25rem;
 }
 
-.markdown-body p { 
-    margin-bottom: 1rem; 
-    line-height: 1.75; 
+.markdown-body p {
+    margin-bottom: 1rem;
+    line-height: 1.75;
 }
 
-.markdown-body strong { 
-    font-weight: 600; 
-    color: #111827; 
+.markdown-body strong {
+    font-weight: 600;
+    color: #111827;
 }
 
 .markdown-body ul {
@@ -33,17 +33,20 @@
 /* ===== レイアウト・共通 ===== */
 
 body {
-    background-color: #f9fafb;
-    color: #111827;
-    font-family: ui-sans-serif, system-ui, sans-serif;
-    min-height: 100vh;
+    font-family: sans-serif;
+    margin: 0;
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
 }
-table,th,td {
+
+table,
+th,
+td {
     border: 1px solid #333;
     padding: 10px;
 }
+
 /* ===== ヘッダー ===== */
 
 header {
@@ -51,7 +54,7 @@ header {
     border-bottom: 1px solid #e5e7eb;
 }
 
-header > div {
+header>div {
     max-width: 56rem;
     margin-left: auto;
     margin-right: auto;
@@ -63,12 +66,12 @@ header > div {
     justify-content: space-between;
 }
 
-header > div > a:first-child {
+header>div>a:first-child {
     font-size: 1.25rem;
     font-weight: 700;
 }
 
-header > div > a:last-child {
+header>div>a:last-child {
     font-size: 0.875rem;
     color: #6b7280;
     display: flex;
@@ -76,11 +79,11 @@ header > div > a:last-child {
     gap: 0.25rem;
 }
 
-header > div > a:last-child:hover {
+header>div>a:last-child:hover {
     color: #111827;
 }
 
-header > div > a:last-child i {
+header>div>a:last-child i {
     width: 1rem;
     height: 1rem;
 }
@@ -88,23 +91,19 @@ header > div > a:last-child i {
 /* ===== メイン ===== */
 
 main {
-    flex-grow: 1;
-    max-width: 56rem;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+    max-width: 896px;
+    margin: 0 auto;
+    padding: 32px 16px;
+    display: block;
 }
 
 /* ホームビュー */
 
-#view-home > div:first-child {
+#view-home>div:first-child {
     margin-bottom: 2rem;
 }
 
-#view-home > div:first-child > h1 {
+#view-home>div:first-child>h1 {
     font-size: 1.5rem;
     font-weight: 700;
     margin-bottom: 1rem;
@@ -120,6 +119,7 @@ main {
     display: grid;
     gap: 1.5rem;
 }
+
 #post-grid a {
     background: #FFF;
     padding: 20px;
@@ -139,7 +139,7 @@ main {
     border: 1px solid #e5e7eb;
 }
 
-#view-detail > button {
+#view-detail>button {
     font-size: 0.875rem;
     color: #6b7280;
     margin-bottom: 1.5rem;
@@ -148,11 +148,11 @@ main {
     gap: 0.25rem;
 }
 
-#view-detail > button:hover {
+#view-detail>button:hover {
     color: #111827;
 }
 
-#view-detail > button i {
+#view-detail>button i {
     width: 1rem;
     height: 1rem;
 }
@@ -168,21 +168,88 @@ main {
 
 
 /*  ===== ログイン画面 =====  */
-#login-form div{
-    display:block;
+#login-form div {
+    display: block;
     margin: 10px 0;
 }
+
 #login-form input {
-    display:block;
+    display: block;
     border: 1px solid #333;
 }
-#login-form button{
+
+#login-form button {
     width: 100%;
     margin: 10px auto;
-    display:block;
+    display: block;
     justify-content: center;
     background: #EEEEEE;
     border: 1px solid #000000;
+}
+
+/* ===== 記事作成・編集フォーム ===== */
+
+#editor-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+
+#post-form>div {
+    margin-bottom: 1rem;
+}
+
+#post-form label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+}
+
+#post-form input[type="text"],
+#post-form input[type="datetime-local"],
+#post-form textarea {
+    display: block;
+    width: 100%;
+    border: 1px solid #333;
+    padding: 0.375rem 0.5rem;
+    font-size: 0.95rem;
+    box-sizing: border-box;
+}
+
+#post-form textarea {
+    min-height: 200px;
+    resize: vertical;
+}
+
+#post-form p {
+    font-size: 0.85rem;
+    color: #6b7280;
+    margin-top: 0.25rem;
+}
+
+#post-form div:last-of-type label {
+    display: inline;
+    font-weight: normal;
+    margin-right: 0.5rem;
+}
+
+#post-form button {
+    border: 1px solid #333;
+    padding: 0.25rem 0.75rem;
+    background: #fff;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    margin-right: 0.5rem;
+}
+
+#post-form a {
+    font-size: 0.95rem;
+    color: #6b7280;
+    text-decoration: underline;
+}
+
+#post-form a:hover {
+    color: #111827;
 }
 
 /* ===== フッター ===== */
@@ -193,7 +260,7 @@ footer {
     margin-top: auto;
 }
 
-footer > div {
+footer>div {
     max-width: 56rem;
     margin-left: auto;
     margin-right: auto;
@@ -205,4 +272,3 @@ footer > div {
     font-size: 0.875rem;
     color: #6b7280;
 }
-

@@ -17,7 +17,6 @@ type PostInput = {
 export async function getAllPosts() {
     return (
         await prisma.post.findMany({
-            where: { status: "published" },
             orderBy: { published_at: "desc" },
         })
     )
@@ -26,7 +25,7 @@ export async function getAllPosts() {
 // IDが一致する記事を1件取得
 export async function getPostById(id:string) {
     return(
-        await prisma.post.findUnique({      
+        await prisma.post.findUnique({
         where: { id: id }, })
     )
 }
@@ -34,7 +33,7 @@ export async function getPostById(id:string) {
 // 新しいレコードの挿入
 export async function createPost(data: PostInput) {
     return await prisma.post.create({   //prismaにデータを書き込む。
-        data: data 
+        data: data
     })
 }
 

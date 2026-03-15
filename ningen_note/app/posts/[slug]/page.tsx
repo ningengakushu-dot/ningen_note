@@ -8,7 +8,7 @@ export default async function PostDetail({ params }: { params: Promise<{ slug: s
     where: { slug: slug, status: "published" },
   })
 
-  // 見つからない場合 
+  // 見つからない場合
   if (post === null) {
     return (
       <main>
