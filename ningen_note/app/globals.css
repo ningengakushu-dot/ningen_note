@@ -98,6 +98,12 @@ main {
 }
 
 /* ホームビュー */
+#view-home a {
+    border: 1px solid #333333;
+    padding:10px;
+    margin: 10px 0;
+    display: block;
+}
 
 #view-home>div:first-child {
     margin-bottom: 2rem;
