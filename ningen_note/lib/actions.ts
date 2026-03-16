@@ -83,3 +83,4 @@ export async function logout(){
         supabase.auth.signOut()
     )
 }
+
