@@ -21,7 +21,7 @@ export default async function Home() {
     function formatDate(dateString: Date | null) {
         if (dateString) {
             return new Date(dateString).toLocaleDateString()
-        } else if (dateString) {
+        } else {
             return '未設定'
         }
     }
