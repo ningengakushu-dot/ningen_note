@@ -1,49 +1,61 @@
-"use client" //*
-
+"use client"
 import { useState } from 'react'
 import { useEffect } from 'react'
+// URLの「?」以降についているデータ（クエリパラメータ）を読み取るための機能
 import { useSearchParams } from 'next/navigation'
 import { createPost, getPostById, updatePost } from "@/lib/actions"
 import Link from "next/link"
 
-
 export default function Editor() {
-
     const searchParams = useSearchParams() // URLチェック
-    const id = searchParams.get('id') //URLのid=xxxからIDを取得
+    const id = searchParams.get('id')
+    // searchParams.get('id')
+    // URLの中から ?id=123 のような部分を探して、その「123」を取り出す。
+    // URL　→　http://localhost:3000/admin/create?id=e5506253-e3eb-45f8-b496-ffd832137abb
+    // IDの有無によって「新しい記事」か「既存の記事」かを判断する。
+    //　                        ↓　↓
+    // このおかげで、1つの画面を「新規作成」と「編集」の両方で使い回すことができる。
+    // もし編集の場合、既存の記事データを取得し、フォームにセットする。
     useEffect(() => {
-        // もしIDがあれば（編集モードなら）データを取得
         if (id) {
             getPostById(id).then((post) => {
                 if (post) {
-                    // 取ってきたデータをそれぞれの箱（State）に入れる
                     setTitle(post.title)
                     setSlug(post.slug)
                     setTag(post.tags.join(', '))
                     setContent(post.content)
                     setStatus(post.status)
+                    if (post.published_at) {
+                        const date = new Date(post.published_at);
+                        // YYYY-MM-DDTHH:mm 形式に変換
+                        setPublishedAt(date.toISOString().slice(0, 16));
+                    } else {
+                        setPublishedAt(""); // データがなければ空文字列
+                    }
                 }
             })
         }
-    }, [id]) // IDが変わった時に実行する
+    }, [id])
 
     const [title, setTitle] = useState("")
     const [slug, setSlug] = useState("")
     const [tag, setTag] = useState("")
     const [content, setContent] = useState("")
     const [status, setStatus] = useState("draft")
+    const [publishedAt,setPublishedAt] = useState<string>("")
 
-    const handleSubmit = async () => {
+    const pushSubmit = async () => {
         const postData = {
             title: title,
             slug: slug,
             content: content,
             status: status as 'draft' | 'published',
             tags: tag.split(',').map(t => t.trim()),
+            published_at: publishedAt === "" ? null : new Date(publishedAt).toISOString(),
         }
-        if (id) {
+        if (id) { //13,14行目でID取得できてている場合(編集）
             await updatePost(id, postData)
-        } else {
+        } else { // IDがない場合（新規作成）
             await createPost(postData)
         }
 
@@ -57,8 +69,7 @@ export default function Editor() {
             <form id="post-form">
                 <div>
                     <label>タイトル:</label>
-                    <input type="text" value={title} onChange={(e) => setTitle(e.target.value)}
-                    />
+                    <input type="text" value={title} onChange={(e) => setTitle(e.target.value)}/>
                 </div>
                 <div>
                     <label>スラッグ (URL文字列):</label>
@@ -66,7 +77,7 @@ export default function Editor() {
                 </div>
                 <div>
                     <label>投稿日:</label>
-                    <input type="datetime-local" />
+                    <input type="datetime-local" value={publishedAt} onChange={(e) => setPublishedAt(e.target.value)}/>
                     <p>※未指定時は自動設定</p>
                 </div>
                 <div>
@@ -82,7 +93,7 @@ export default function Editor() {
                     <input type="radio" name="status" value="draft" checked={status === 'draft'} onChange={(e) => setStatus(e.target.value)} />下書き
                     <input type="radio" name="status" value="published" checked={status === 'published'} onChange={(e) => setStatus(e.target.value)} />公開
                 </div>
-                <button type="button" onClick={handleSubmit}>保存する</button>
+                <button type="button" onClick={pushSubmit}>保存する</button>
                 <Link href="/admin">戻る</Link>
             </form>
         </main>

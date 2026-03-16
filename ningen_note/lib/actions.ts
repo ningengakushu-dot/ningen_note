@@ -10,7 +10,7 @@ type PostInput = {
     content: string;
     status: 'draft' | 'published';
     tags: string[];
-    published_at?: string | null;
+    published_at?: Date | string | null;
 };
 
 // 記事を取得
@@ -23,17 +23,28 @@ export async function getAllPosts() {
 }
 
 // IDが一致する記事を1件取得
-export async function getPostById(id:string) {
-    return(
+export async function getPostById(id: string) {
+    return (
         await prisma.post.findUnique({
-        where: { id: id }, })
+            where: { id: id },
+        })
     )
 }
 
-// 新しいレコードの挿入
+// 新しいレコードの挿入（prismaにデータを書き込む）
 export async function createPost(data: PostInput) {
-    return await prisma.post.create({   //prismaにデータを書き込む。
-        data: data
+    const postData = {
+        ...data,
+    };
+
+    if (data.published_at) {
+        postData.published_at = new Date(data.published_at);
+    } else {
+        postData.published_at = new Date();
+    }
+
+    return await prisma.post.create({
+        data: postData
     })
 }
 
