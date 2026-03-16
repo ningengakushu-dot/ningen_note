@@ -5,7 +5,7 @@ import { logout } from "@/lib/actions"
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
     const pushLogout = async () => {
         await logout()
-        window.location.href = "/admin/login"
+        window.location.href = "/login"
     }
     return (
         <div>
