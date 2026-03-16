@@ -1,8 +1,6 @@
 import type { Metadata } from "next"
 import "./globals.css"
-import Header from "@/components/Header"
 import Footer from "@/components/Footer"
-
 export const metadata: Metadata = {
   title: "NINGEN GAKUSHU NOTE",
   description: "個人用ブログ兼CMS",
@@ -16,7 +14,7 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body className="bg-gray-50 text-gray-900 font-sans min-h-screen flex flex-col">
-        <Header />
+
         {children}
         <Footer />
       </body>

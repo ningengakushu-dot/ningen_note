@@ -3,6 +3,7 @@ import { prisma } from "@/lib/prisma"
 import Link from "next/link"
 import ArticleCard from "@/components/ArticleCard"
 import TagFilter from "@/components/TagFilter"
+import Header from "@/components/Header"
 
 
 // データ取得 Prismaリファレンス参照（findMany、where、orderBy）
@@ -34,16 +35,19 @@ export default async function Home() {
   }))
 
   return (
-    <main>
-      <div id="view-home">
-        <div>
-          <h1>記事一覧</h1>
+    <>
+      <Header />
+      <main>
+        <div id="view-home">
+          <div>
+            <h1>記事一覧</h1>
+          </div>
+
+          <TagFilter tags={uniqueTags} posts={postsForClient} />
+
         </div>
-
-        <TagFilter tags={uniqueTags} posts={postsForClient} />
-
-      </div>
-    </main>
+      </main>
+    </>
   )
 }
 
