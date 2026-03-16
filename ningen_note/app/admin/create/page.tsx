@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 // URLの「?」以降についているデータ（クエリパラメータ）を読み取るための機能
 import { useSearchParams } from 'next/navigation'
-import { createPost, getPostById, updatePost } from "@/lib/actions"
+import { createPost, getPostById, updatePost, deletePost } from "@/lib/actions"
 import Link from "next/link"
 
 export default function Editor() {
@@ -42,8 +42,9 @@ export default function Editor() {
     const [tag, setTag] = useState("")
     const [content, setContent] = useState("")
     const [status, setStatus] = useState("draft")
-    const [publishedAt,setPublishedAt] = useState<string>("")
+    const [publishedAt, setPublishedAt] = useState<string>("")
 
+    // 保存ボタン関数
     const pushSubmit = async () => {
         const postData = {
             title: title,
@@ -58,9 +59,22 @@ export default function Editor() {
         } else { // IDがない場合（新規作成）
             await createPost(postData)
         }
-
         alert("保存しました")
         window.location.href = "/admin"
+    }
+
+    // 削除関数
+    const pushDelete = async () => {
+        if (id) {
+            await deletePost(id)
+            alert("削除しました")
+            window.location.href = "/admin"
+        }
+    }
+    // 削除ボタンの表示（ID取得時のみ）
+    let deleteButton = null
+    if (id) {
+        deleteButton = <button type="button" onClick={pushDelete}>削除</button>
     }
 
     return (
@@ -69,7 +83,7 @@ export default function Editor() {
             <form id="post-form">
                 <div>
                     <label>タイトル:</label>
-                    <input type="text" value={title} onChange={(e) => setTitle(e.target.value)}/>
+                    <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
                 </div>
                 <div>
                     <label>スラッグ (URL文字列):</label>
@@ -77,7 +91,7 @@ export default function Editor() {
                 </div>
                 <div>
                     <label>投稿日:</label>
-                    <input type="datetime-local" value={publishedAt} onChange={(e) => setPublishedAt(e.target.value)}/>
+                    <input type="datetime-local" value={publishedAt} onChange={(e) => setPublishedAt(e.target.value)} />
                     <p>※未指定時は自動設定</p>
                 </div>
                 <div>
@@ -94,8 +108,10 @@ export default function Editor() {
                     <input type="radio" name="status" value="published" checked={status === 'published'} onChange={(e) => setStatus(e.target.value)} />公開
                 </div>
                 <button type="button" onClick={pushSubmit}>保存する</button>
+                {deleteButton}
                 <Link href="/admin">戻る</Link>
             </form>
         </main>
     )
+
 }
