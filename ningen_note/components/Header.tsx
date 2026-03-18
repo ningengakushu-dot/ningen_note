@@ -22,8 +22,8 @@ export default function Header({ mode = "public" }: { mode?: "public" | "admin" 
     return (
         <header>
             <div>
-                <Link href="/" >NINGEN GAKUSHU NOTE</Link>
-                {navLinks}
+                <Link href="/" className="logo" >NINGEN GAKUSHU NOTE</Link>
+                <nav>{navLinks}</nav>
 
             </div>
         </header>

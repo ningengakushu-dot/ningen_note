@@ -1,6 +1,11 @@
 import type { Metadata } from "next"
+import { Inter, Noto_Sans_JP } from "next/font/google"
 import "./globals.css"
 import Footer from "@/components/Footer"
+
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
+const notoSansJP = Noto_Sans_JP({ subsets: ["latin"], variable: "--font-noto-sans-jp" })
+
 export const metadata: Metadata = {
   title: "NINGEN GAKUSHU NOTE",
   description: "個人用ブログ兼CMS",
@@ -13,8 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
-      <body className="bg-gray-50 text-gray-900 font-sans min-h-screen flex flex-col">
-
+      <body className={`${inter.variable} ${notoSansJP.variable}`}>
         {children}
         <Footer />
       </body>

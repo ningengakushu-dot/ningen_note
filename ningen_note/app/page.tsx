@@ -1,7 +1,5 @@
 
 import { prisma } from "@/lib/prisma"
-import Link from "next/link"
-import ArticleCard from "@/components/ArticleCard"
 import TagFilter from "@/components/TagFilter"
 import Header from "@/components/Header"
 
@@ -38,14 +36,8 @@ export default async function Home() {
     <>
       <Header />
       <main>
-        <div id="view-home">
-          <div>
-            <h1>記事一覧</h1>
-          </div>
-
-          <TagFilter tags={uniqueTags} posts={postsForClient} />
-
-        </div>
+          <h1>記事一覧</h1>
+        <TagFilter tags={uniqueTags} posts={postsForClient} />
       </main>
     </>
   )

@@ -10,12 +10,14 @@ type Props = {
 
 export default function ArticleCard(props: Props) {
     return (
-        <Link href={`/posts/${props.slug}`} >
-            {props.tags.map((tag) => (        // 配列の要素が２つ    1回目：<span key="技術">技術</span>   
-                <span key={tag}>{tag}</span>  //　                  2回目：<span key="日常">日常</span>
+        <Link className="article-card" href={`/posts/${props.slug}`} >
+            <div>
+                {props.tags.map((tag) => (
+                <span className="tag-pill" key={tag}>{tag}</span>
             ))}
-            <p>投稿日：{props.published_at}</p>
-            <p>{props.title}</p>
+            </div>
+            <p className="card-date">投稿日：{props.published_at}</p>
+            <p className="card-title">{props.title}</p>
         </Link>
     )
 }
