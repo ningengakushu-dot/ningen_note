@@ -14,8 +14,8 @@ export default async function PostDetail({ params }: { params: Promise<{ slug: s
     return (
       <>
         <Header />
-        <main>
-          <Link className="back-link" href="/">一覧に戻る</Link>
+        <main className="main--narrow" >
+          <Link className="back-link" href="/">← 一覧に戻る</Link>
           <p>記事が見つかりません</p>
         </main>
       </>
@@ -27,15 +27,14 @@ export default async function PostDetail({ params }: { params: Promise<{ slug: s
     return (
       <>
         <Header />
-        <main>
-          <Link href="/">一覧に戻る</Link>
+        <main className="main--narrow">
+          <h1 className="detail-title">{post.title}</h1>
           <div className="detail-meta">
             {post.tags.map((tag) => (
               <span className="tag-pill" key={tag}>{tag}</span>
             ))}
             <span className="date">投稿日: {post.published_at?.toISOString().slice(0, 10)}</span>
           </div>
-          <h2>{post.title}</h2>
           <div className="markdown-body">
             <ReactMarkdown>{post.content}</ReactMarkdown>
           </div>

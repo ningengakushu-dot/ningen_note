@@ -38,8 +38,10 @@ export default async function Home() {
     } else {
         return (
             <main>
-                <h2>記事一覧</h2>
-                <Link href="/admin/create">+ 新規記事を作成</Link>
+                <div className="admin-header">
+                    <h2>記事一覧</h2>
+                    <Link href="/admin/create" className="btn-yellow">+ 新規作成</Link>
+                </div>
                 <table>
                     <thead>
                         <tr>
