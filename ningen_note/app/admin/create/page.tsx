@@ -1,12 +1,14 @@
 "use client"
 import { useState } from 'react'
 import { useEffect } from 'react'
+import { Suspense } from 'react' // ビルドエラー対策
+
 // URLの「?」以降についているデータ（クエリパラメータ）を読み取るための機能
 import { useSearchParams } from 'next/navigation'
 import { createPost, getPostById, updatePost, deletePost } from "@/lib/actions"
 import Link from "next/link"
 
-export default function Editor() {
+function EditorForm() {
     const searchParams = useSearchParams() // URLチェック
     const id = searchParams.get('id')
     // searchParams.get('id')
@@ -54,7 +56,7 @@ export default function Editor() {
             tags: tag.split(',').map(t => t.trim()),
             published_at: publishedAt === "" ? null : new Date(publishedAt).toISOString(),
         }
-        if (id) { //13,14行目でID取得できてている場合(編集）
+        if (id) { // iD取得できてている場合(編集）
             await updatePost(id, postData)
         } else { // IDがない場合（新規作成）
             await createPost(postData)
@@ -114,4 +116,12 @@ export default function Editor() {
         </main>
     )
 
+}
+
+export default function EditorPage() {
+    return (
+        <Suspense fallback={<p>読み込み中...</p>}>
+            <EditorForm />
+        </Suspense>
+    )
 }
