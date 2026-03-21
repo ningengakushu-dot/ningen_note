@@ -28,11 +28,10 @@ export default function TagFilter(props: Props) {
     return (
         <>
             <div className="tag-filters">
-                {/* テンプレリテラル（tag-btn） */}
                 <button className={`tag-btn ${selectTag === null? "active" : ""}`} onClick={() =>
                     setSelectTag(null)}>すべて</button>
                 {props.tags.map((tag) => (
-                    <button className="tag-btn" key={tag} onClick={() =>
+                    <button className={`tag-btn ${selectTag === tag ? "active" : ""}`} key={tag} onClick={() =>
                         setSelectTag(tag)}>{tag}</button>
                 ))}
             </div>
@@ -46,7 +45,6 @@ export default function TagFilter(props: Props) {
         </>
     )
 }
-
 /*
 --- 内容 ---
 ステップ1: 「技術」ボタンの onClick が動く → setSelectTag("技術")
