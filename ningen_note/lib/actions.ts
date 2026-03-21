@@ -1,4 +1,5 @@
 "use server" //ファイル内の処理をサーバー側で実行させる
+import { revalidatePath } from "next/cache"
 import { prisma } from "@/lib/prisma"
 import { createClient } from "@/lib/supabase/server"
 
@@ -44,24 +45,33 @@ export async function createPost(data: PostInput) {
         postData.published_at = new Date();
     }
 
-    return await prisma.post.create({
+    const result = await prisma.post.create({
         data: postData
     })
+    revalidatePath('/')
+    revalidatePath('/admin')
+    return result
 }
 
 // 記事を更新
 export async function updatePost(id: string, data: PostInput) {
-    return await prisma.post.update({
+    const result = await prisma.post.update({
         where: { id: id },
         data: data
     })
+    revalidatePath('/')
+    revalidatePath('/admin')
+    return result
 }
 
 // 記事を削除
 export async function deletePost(id: string) {
-    return await prisma.post.delete({
+    const result = await prisma.post.delete({
         where: { id: id }
     })
+    revalidatePath('/')
+    revalidatePath('/admin')
+    return result
 }
 
 
