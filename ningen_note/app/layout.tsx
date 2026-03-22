@@ -6,12 +6,12 @@ import Footer from "@/components/Footer"
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
 const notoSansJP = Noto_Sans_JP({ subsets: ["latin"], variable: "--font-noto-sans-jp" })
-const mPlusRounded = M_PLUS_Rounded_1c({ weight: ["700", "800"], subsets: ["latin"], variable: "--font-mplus-rounded" })
+const mPlusRounded = M_PLUS_Rounded_1c({ weight: ["700", "800"], subsets: ["latin"], variable: "--font-mplus-rounded", adjustFontFallback: false })
 
 
 export const metadata: Metadata = {
-  title: "NINGEN GAKUSHU NOTE",
-  description: "個人用ブログ兼CMS",
+  title: "人間学習ノート | 技術ブログ",
+  description: "Next.js(App Router)とSupabaseで構築したマークダウン対応のCMS 技術ブログ",
 }
 
 export default function RootLayout({

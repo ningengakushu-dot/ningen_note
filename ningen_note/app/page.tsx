@@ -36,7 +36,6 @@ export default async function Home() {
     <>
       <Header />
       <main>
-          <h1>記事一覧</h1>
         <TagFilter tags={uniqueTags} posts={postsForClient} />
       </main>
     </>

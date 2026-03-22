@@ -2,7 +2,7 @@ export default function Footer() {
     return (
         <footer>
             <div>
-                <p>&copy; 2026 NINGEN GAKUSHU NOTE.</p>
+                <p>&copy; 2026 人間学習</p>
             </div>
         </footer>
     )

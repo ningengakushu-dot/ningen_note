@@ -89,7 +89,7 @@ function EditorForm() {
                 </div>
                 <div>
                     <label>スラッグ (URL文字列):</label>
-                    <input type="text" placeholder="about-Ningen" value={slug} onChange={(e) => setSlug(e.target.value)} />
+                    <input type="text" placeholder="about-ningen-gakushu" value={slug} onChange={(e) => setSlug(e.target.value)} />
                 </div>
                 <div>
                     <label>投稿日:</label>
