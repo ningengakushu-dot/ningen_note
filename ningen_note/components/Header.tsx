@@ -26,7 +26,7 @@ export default function Header({ mode = "public" }: { mode?: "public" | "admin" 
         navLinks =
             <>
                 <button onClick={pushLogout} className="nav-link nav-link--muted" >ログアウト</button>
-                <Link href="/" target="_blank" className="btn-preview" >公開サイトを確認</Link>
+                <Link href="/" className="btn-preview" >公開サイトを確認</Link>
             </>
     } else if (mode === "login") {
         navLinks = null
