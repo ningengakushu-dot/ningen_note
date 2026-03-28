@@ -1,6 +1,5 @@
 "use client"
 import { useState } from 'react'
-import Link from "next/link"
 import { login } from '@/lib/actions'
 import Header from "@/components/Header"
 
@@ -23,8 +22,7 @@ export default function Home() {
         <>
             <Header mode="login" />
             <main>
-                <h1>ログイン</h1>
-                <p>管理者用ページです。</p>
+                <h1>管理者ログイン</h1>
                 <form id="login-form">
                     <div>
                         <label>メールアドレス:</label>
