@@ -1,0 +1,51 @@
+# 人間学習 - ノート
+
+プログラミングとWeb開発の実践記録を投稿・管理するための個人ブログCMS。
+
+## **開発背景**
+
+Web開発技術（React / Next.js / TypeScript）の理解を深めるために、既存サイト（[ningengakushu.com](http://ningengakushu.com/)）内で静的に公開していた「NOTE」セクションを、Next.jsを用いた動的なブログシステムとして自力で再現することを目標に、本プロジェクトをスタートしました。
+
+そのため、この「学習ノート」は完成されたプロダクトではなく、理解が追いついていなかった技術にもう一度向き合い、実務での運用を想定して最後まで作り上げた学習の証です。
+
+## **公開URL**
+
+[https://note.ningengakushu.com/](https://note.ningengakushu.com/**)
+
+![image.png](attachment:b1668ceb-7cbb-4ec3-8869-285efd072587:image.png)
+
+## 主な機能
+
+### 公開ページ
+- 記事一覧（タグによるフィルタリング）
+- 記事詳細（Markdownレンダリング）
+
+### 管理画面
+
+- ログイン認証
+- 記事の作成・編集・削除
+- 下書き / 公開 管理
+- タグ管理
+
+## 使用技術
+
+| カテゴリ | 技術 | バージョン |
+| --- | --- | --- |
+| フレームワーク | Next.js (App Router) | 16.1.6 |
+| 言語 | TypeScript | 5 |
+| UIライブラリ | React | 19.2.3 |
+| スタイリング | Tailwind CSS | 4 |
+| データベース | Supabase (PostgreSQL) | - |
+| ORM | Prisma | 7.4.2 |
+| 認証 | Supabase Auth (@supabase/ssr) | 0.9.0 |
+| Markdown | react-markdown | 10.1.0 |
+| デプロイ | Vercel | - |
+
+## **今後の実装予定**
+
+- 記事ごとのメタデータ: 各記事ページに固有のtitle/descriptionを動的に設定。
+- 画像アップロード機能
+- 更新日時の追加
+- プレビュー機能の実装: 現状の管理画面にはプレビューがありません。
+- 全文検索機能: タグだけでなく、キーワードで記事を探せるように。
+
