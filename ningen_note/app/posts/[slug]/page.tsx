@@ -1,6 +1,8 @@
 import { prisma } from "@/lib/prisma"
 import Link from "next/link"
 import ReactMarkdown from "react-markdown"
+import remarkGfm from "remark-gfm"
+import rehypeHighlight from "rehype-highlight"
 import Header from "@/components/Header"
 
 export default async function PostDetail({ params }: { params: Promise<{ slug: string }> }) {
@@ -36,7 +38,7 @@ export default async function PostDetail({ params }: { params: Promise<{ slug: s
             <span className="date">投稿日: {post.published_at?.toISOString().slice(0, 10)}</span>
           </div>
           <div className="markdown-body">
-            <ReactMarkdown>{post.content}</ReactMarkdown>
+            <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeHighlight]}>{post.content}</ReactMarkdown>
           </div>
         </main >
       </>
