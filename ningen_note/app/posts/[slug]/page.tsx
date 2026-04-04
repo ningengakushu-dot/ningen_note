@@ -4,6 +4,29 @@ import ReactMarkdown from "react-markdown"
 import remarkGfm from "remark-gfm"
 import rehypeHighlight from "rehype-highlight"
 import Header from "@/components/Header"
+import type { Metadata } from 'next'
+
+
+type Props = {
+  params: Promise<{ slug: string }>
+}
+
+// 
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params
+  const post = await prisma.post.findFirst({
+    where: { slug, status: "published" },
+  })
+  if (post === null) {
+    return {
+    }
+  }
+  return {
+    title: `${post.title} | 人間学習ノート`,
+    description:`${post.content.slice(0,120)}`
+  }
+}
+
 
 export default async function PostDetail({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params  // URLから記事の名前（slug）を取得
