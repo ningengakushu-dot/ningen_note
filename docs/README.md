@@ -10,7 +10,7 @@
 
 ## **公開URL**
 
-[https://note.ningengakushu.com/](https://note.ningengakushu.com/**)
+[https://note.ningengakushu.com/](https://note.ningengakushu.com/)
 ![人間学習ノート](image-1.png)
 
 ## 主な機能
